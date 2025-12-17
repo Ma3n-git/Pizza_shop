@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="attachment/favicon.ico">
+    <title>Speedy Slice | Order Now</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+    <script src="menudata.js" defer></script>
+    <script src="functionality.js" defer></script>
+    <script src="order.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div>
+                    <h1><span>🍕 Speedy Slice</span></h1>
+                    <p><em>Fresh & Hot Delivery</em></p>
+                </div>
+            </div>
+            <div class="header-info">
+                <div>📞 (+44) 7123 456789</div>
+                <div>🕐 Open 11AM - 11PM</div>
+            </div>
+    
+        </div>
+    </header>
+    <nav>
+        <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="order.html">Order Online</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="order-page">
+        <div class="menu-section">
+            <h2>Our Menu</h2>
+                <div class="category-select-container">
+                    <label for="category-select"><strong>Category:</strong></label>
+                    <select id="category-select" onchange="filterMenu()">
+                        <option value="pizzas">🍕 Pizzas</option>
+                        <option value="drinks">🥤 Drinks</option>
+                        <option value="sides">🍟 Sides</option>
+                    </select>
+                    <label for="sort-select"><strong>Sort By:</strong></label>
+                    <select id="sort-select" onchange="filterMenu()">
+                        <option value="default">Default</option>
+                        <option value="calories">Calories</option>
+                        <option value="price">Price</option>
+                        <option value="name">Name</option>
+                    </select>
+                </div>
+            <div id="pizza-category" class="menu-category">
+            <!-- Pizza items will be dynamically inserted here -->
+            </div>
+            <div class="menu-category" id="drinks-category" style="display: none;">
+            <!-- Drink items will be dynamically inserted here -->
+            </div>
+            <div class="menu-category" id="sides-category" style="display: none;">
+            <!-- Side items will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <div class="cart-section">
+            <div class="cart-header">
+                🛒 Your Order
+            </div>
+
+            <div id="cart-items">
+                <div class="cart-empty">Your cart is empty</div>
+            </div>
+
+            <div id="cart-summary-container">
+                <button onclick="openOrderDetailsDialog()">Proceed to Checkout</button>
+            </div>
+
+            <div id="order-details-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                <h2>Enter Your Details</h2>
+                <form id="order-form" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                        <br><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input pattern="[0-9]{11}" type="tel" id="phone" required placeholder="07xxxxxxxxx" title="07xxxxxxxxx">
+                        <br><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Order Type</label>
+                        <div class="order-type-options">
+                            <label><input type="radio" name="orderType" value="Delivery" id="delivery" checked> Delivery</label>
+                            <label><input type="radio" name="orderType" value="Pickup"> Pickup</label>
+                        </div>
+                        <label for="address" id="address-group">📍 Delivery Address</label>
+                        <textarea id="address" rows="3" required placeholder="123 Main St, Apt 4B"></textarea>
+                        <br><br>
+                    </div>
+            
+                    <button type="submit" id="submit-btn">Confirm Order</button>
+                    <button type="button" onclick="closeOrderDetailsDialog()">Cancel</button>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <div id="toast">
+        <div id="toastContent">
+            <strong id="toastTitle"></strong>
+            <div id="toastDescription"></div>
+            <button id="toastOkBtn" style="display:none;">OK</button>
+        </div>
+    </div>
+    <div id="orderModal">
+        <div id="orderModalBox">
+            <h2 id="orderModalTitle"></h2>
+            <!-- Ordered items and totals (will be populated from JS) -->
+            <div id="order-details-items" class="order-details-items"></div>
+            <div id="order-details-total" class="order-details-total"></div>
+            <p id="orderModalMessage"></p>
+            <button id="orderModalOkBtn">OK</button>
+        </div>
+    </div>
+</body>
+    <footer>
+        <p>&copy; 2025 Speedy Slice Pizza. All Rights Reserved.</p>
+        <p>Open daily: 11:00 AM - 11:00 PM</p>
+    </footer>
+</html>

@@ -1,0 +1,325 @@
+
+/* meant for base styling, however along the way, it lost that status unfortunately */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fff5f5;
+        }
+        
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+             margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: #b71c1c;
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+        }   
+        nav a:hover, nav a:focus, nav a:active {
+            background-color: #d62828;
+            padding: 0.25rem 0.5rem;
+            background: linear-gradient(180deg, #d62828, #b71c1c);
+        }
+        /* --- HAMBURGER MENU STYLES --- */
+        .hamburger-menu {
+            display: none; 
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 20; /* Keep it above the links when open */
+        }
+
+        .icon-bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        button,
+        .btn {
+            background: #d62828;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover,
+        .btn:hover, button:focus-visible, .btn:focus-visible, button:active, .btn:active {
+            background: #b71c1c;
+            transform: scale(1.02);
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            margin-top: 0.4rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+        outline: none;
+        border-color: #d62828;
+        box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.1);
+        }
+
+        .hero {
+            background-color: #ffebee;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .menu-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pizza-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }       
+        .pizza-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 250px;
+            position: relative;
+            background-color: #fff;
+        }
+        .pizza-card h3 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        .pizza-card p {
+            color: #475569;
+            flex-grow: 1;
+        }
+        .pizza-card .order-btn {
+            background-color: #d62828;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: auto; /* This pushes the button to the bottom */
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.875rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .pizza-card .order-btn:hover {
+            background-color: #b71c1c;
+            transform: scale(1.02);
+        }
+        /* ---------- Pizza image fit & responsiveness ---------- */
+        .pizza-card {
+            align-items: stretch; /* make image and content align consistently */
+            display:flex;
+            flex-direction: column;
+            min-height: 250px;
+        }
+
+        .pizza-card .pizza-image-wrapper {
+            aspect-ratio: auto;
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            background: #813737;
+        }
+
+        .pizza-card .pizza-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.25s ease;
+        }
+
+        /* Fallback for images that are not wrapped */
+        .pizza-card > .pizza-image,
+        .pizza-card img.pizza-image {
+            width: 100%;
+            height: 200px;
+            max-height: 240px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+        .pizza-card:hover .pizza-image {
+            transform: scale(1.03);
+
+        }
+
+        @media (max-width: 768px) {
+            .pizza-card > .pizza-image,
+            .pizza-card img.pizza-image {
+                height: 140px;
+            }
+            .pizza-image-wrapper {
+                aspect-ratio: 16/11;
+                min-height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pizza-card > .pizza-image,
+            .pizza-card img.pizza-image {
+                height: 110px;
+            }
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        position: absolute;
+        top: 0; 
+        right: 0;
+        width: 100%;
+        background-color: #b71c1c; /* Same as nav */
+        padding: 60px 0 20px 0; /* Space for the header/button */
+        height: 100vh; /* Make it full screen when open */
+        transform: translateX(100%); /* Slide off screen to the right */
+        transition: transform 0.3s ease-in-out;
+        z-index: 10;
+    }
+    .hamburger-menu {
+        display: block;
+    }
+    nav {
+        display: flex; /* Makes the logo/button and links align */
+        justify-content: flex-end; /* Push hamburger button to the right */
+        align-items: center;
+        padding: 0.5rem 1rem; /* Add padding for space */
+    }
+    nav ul.active {
+        transform: translateX(0); /* Slide on screen */
+    }
+        nav ul li {
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    nav ul li a {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+    }
+    .hamburger-menu.active .icon-bar:nth-child(2) {
+        opacity: 0; /* Hide middle bar */
+    }
+    .hamburger-menu.active .icon-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg); /* Top bar rotates */
+    }
+    .hamburger-menu.active .icon-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg); /* Bottom bar rotates */
+    }
+    
+    .pizza-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pizza-card {
+        min-height: 200px;
+    }
+}
